@@ -1,0 +1,44 @@
+#heroSection {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+    gap: 10rem;
+}
+
+.leftContain p {
+    color: #FF9900;
+    font-size: 1.2rem;
+}
+
+.leftContain h1{
+    font-size: 2.58rem;
+    margin-bottom: 0.1rem;
+}
+
+.leftContain h4{
+    font-size: 1.1rem;
+    
+}
+ 
+
+.shopBtn {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    background: #FF9900;
+    border-radius: 0.5rem;
+}
