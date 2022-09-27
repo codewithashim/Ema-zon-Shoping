@@ -9,7 +9,7 @@ const Product = (props) => {
     return (
         <article className='productCard'>
             <div className="cardImg">
-                <img src={img ? img : '../../images/404notfound.jpg'} alt="products" className='productImg' />
+                <img src={img} alt="products" className='productImg' />
             </div>
             <div className="productDetails">
                 <h3>{name}</h3>

@@ -31,7 +31,21 @@
     text-align: left;
 }
 
-.cartDetails h4{
+.cartDetails h4 {
     font-weight: normal;
     font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1080px) {
+    .productsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+    .productsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }
