@@ -1,6 +1,6 @@
 import React from 'react';
 import './Product.css'
-import errorImg from '../../images/404notfound.jpg'
+// import errorImg from '../../images/404notfound.jpg'
 
 const Product = (props) => {
     const { name, category, seller, price, stock, ratings, ratingsCount, img, shipping } = props.product;
@@ -9,7 +9,8 @@ const Product = (props) => {
     return (
         <article className='productCard'>
             <div className="cardImg">
-                <img src={img} alt="products" className='productImg' />
+                <img src={img}
+                    alt="products" className='productImg' />
             </div>
             <div className="productDetails">
                 <h3>{name}</h3>

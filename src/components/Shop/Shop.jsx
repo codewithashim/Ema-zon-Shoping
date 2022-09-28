@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import './Shop.css'
 import Product from './../Product/Product';
 import Cart from './../Cart/Cart';
-import { addToDb } from '../../fakeData/fakedb';
+import { addToDb, getStoreCart } from '../../fakeData/fakedb';
 
 const Shop = () => {
     const [products, setProducts] = useState([])
@@ -13,11 +13,48 @@ const Shop = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const addToCart = (product) => {
-        console.log('hello', product)
-        const newCart = [...cart, product]
+    useEffect(() => {
+        const storeCart = getStoreCart();
+        const savedCard = [];
+        for (const id in storeCart) {
+            const addedProduct = products.find(product => product.id === id)
+            if (addedProduct) {
+                const quantity = storeCart[id]
+                addedProduct.quantity = quantity;
+                savedCard.push(addedProduct);
+            }
+        }
+        setCart(savedCard)
+    }, [products])
+
+    useEffect(() => {
+        const savedCard = [];
+        const storeCard = getStoreCart();
+        for (const id in storeCard) {
+            const addedProduct = products.find(p => p.id === id);
+            if (addedProduct) {
+                const quantity = storeCard[id]
+                addedProduct.quantity = quantity;
+                savedCard.push(addedProduct);
+            }
+        }
+        setCart(savedCard);
+    }, [products])
+
+    const addToCart = (selectedProduct) => {
+        let newCart = []
+        const exist = cart.find(product => product.id === selectedProduct.id)
+        if (!exist) {
+            selectedProduct.quantity = 1
+            newCart = [...cart, selectedProduct]
+        }
+        else {
+            const rest = cart.filter(product => product.id !== selectedProduct.id)
+            exist.quantity = exist.quantity + 1;
+            newCart = [...rest, exist]
+        }
         setCart(newCart)
-        addToDb(product.id)
+        addToDb(selectedProduct.id)
     }
 
     return (
