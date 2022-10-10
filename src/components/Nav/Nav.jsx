@@ -1,21 +1,33 @@
-import React from 'react';
-import './Nav.css';
-import logo from '../../images/Logo.svg'
+import React from "react";
+import "./Nav.css";
+import logo from "../../images/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
-    return (
-        <nav id='mainNav'>
-            <a href="?">
-                <img src={logo} alt="" />
-            </a>
-            <ul className='navManue'>
-                <li><a href="../Shop/Shop.jsx">Shop</a></li>
-                <li><a href="/revew">Order Review</a></li>
-                <li><a href="/invantory">Manage Inventory</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-        </nav>
-    );
+  return (
+    <nav id="mainNav">
+      <Link to="/">
+        <img src={logo} alt="" />
+      </Link>
+      <ul className="navManue">
+        <li>
+          <Link to="/shop">Shop</Link>
+        </li>
+        <li>
+          <Link to="/order">Order</Link>
+        </li>
+        <li>
+          <Link to="/inventory">Maneg Invventory</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Nav;

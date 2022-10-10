@@ -1,14 +1,11 @@
-import './App.css';
-// import Header from './components/Header/Header';
-import Nav from './components/Nav/Nav';
-import Shop from './components/Shop/Shop';
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+import route from "./components/Router/Router";
 
 function App() {
   return (
     <main className="App">
-      <Nav></Nav>
-      {/* <Header></Header> */}
-      <Shop></Shop>
+      <RouterProvider router={route}></RouterProvider>
     </main>
   );
 }
