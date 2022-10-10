@@ -17,9 +17,6 @@ const route = createBrowserRouter([
       },
       {
         path: "/shop",
-        loader: async () => {
-          return await fetch("products.json");
-        },
         element: <Shop></Shop>,
       },
       {
