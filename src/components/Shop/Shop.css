@@ -26,6 +26,18 @@
     background: #FF9900;
 }
 
+.revewOrderBtn{
+    cursor: pointer;
+    width: 90%;
+    padding: 00.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 0.2rem;
+}
+
 .cartDetails {
     padding-top: 1rem;
     text-align: left;

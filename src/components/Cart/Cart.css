@@ -1,3 +1,15 @@
 .cardCont p {
     margin-top: 0.5rem;
 }
+
+.clearCart{
+    cursor: pointer;
+    width: 90%;
+    padding: 00.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 0.2rem;
+}

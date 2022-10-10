@@ -2,7 +2,8 @@ import { React, useEffect, useState } from "react";
 import "./Shop.css";
 import Product from "./../Product/Product";
 import Cart from "./../Cart/Cart";
-import { addToDb, getStoreCart } from "../../fakeData/fakedb";
+import { addToDb, deleteShoppingCart, getStoreCart } from "../../fakeData/fakedb";
+import { Link } from "react-router-dom";
 // import { useLoaderData } from "react-router-dom";
 
 const Shop = () => {
@@ -15,6 +16,11 @@ const Shop = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  const clearCart =()=>{
+    setCart([])
+    deleteShoppingCart()
+  }
 
   useEffect(() => {
     const storeCart = getStoreCart();
@@ -77,7 +83,11 @@ const Shop = () => {
       <div className="cartContainer">
         <h2 style={{ textAlign: "center" }}>Order Summary</h2>
         <div className="cartDetails">
-          <Cart cart={cart}></Cart>
+          <Cart clearCart={clearCart} cart={cart}>
+            <Link to="/order">
+              <button className="revewOrderBtn">Revew Orders</button>
+            </Link>
+          </Cart>
         </div>
       </div>
     </section>
