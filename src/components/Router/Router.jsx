@@ -5,6 +5,8 @@ import Invantorys from "../../components/Invantorys/Invantorys";
 import About from "../../components/About/About";
 import Orders from "../Orders/Orders";
 import ProductAndCartLoader from "../../Loaders/ProductAndCartLoader";
+import Login from "../Login/Login";
+import Regiser from "../Register/Register";
 
 const route = createBrowserRouter([
   {
@@ -34,7 +36,15 @@ const route = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <div>Login</div>,
+        element: <Login></Login>,
+      },
+      {
+        path: "/logout",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Regiser></Regiser>,
       },
     ],
   },
