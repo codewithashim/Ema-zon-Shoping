@@ -7,6 +7,8 @@ import Orders from "../Orders/Orders";
 import ProductAndCartLoader from "../../Loaders/ProductAndCartLoader";
 import Login from "../Login/Login";
 import Regiser from "../Register/Register";
+import Shepping from "../Shepping/Shepping";
+import PrivetRoute from "./PrivetRoute";
 
 const route = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const route = createBrowserRouter([
         element: <Invantorys></Invantorys>,
       },
       {
+        path: "/shipping",
+        element: (
+          <PrivetRoute>
+            <Shepping></Shepping>
+          </PrivetRoute>
+        ),
+      },
+      {
         path: "/about",
         element: <About></About>,
       },
@@ -40,7 +50,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/logout",
-        element: <Login></Login>,
+        element: <Shop></Shop>,
       },
       {
         path: "/register",

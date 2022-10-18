@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import { AuthContex } from "../Context/UserContex";
 
 const Nav = () => {
-  const { user } = useContext(AuthContex);
+  const { user, logOut } = useContext(AuthContex);
+
+  const HendelLogout = () => {
+    logOut();
+  };
 
   return (
     <nav id="mainNav">
@@ -28,7 +32,9 @@ const Nav = () => {
 
         {user?.uid ? (
           <li>
-            <Link to="/logout" on>Logout</Link>
+            <Link to="/logout" onClick={HendelLogout}>
+              Logout
+            </Link>
           </li>
         ) : (
           <li>

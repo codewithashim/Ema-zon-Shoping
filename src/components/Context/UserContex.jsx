@@ -13,31 +13,32 @@ const auth = getAuth(app);
 const UserContex = ({ children }) => {
   // const user = { email: "codewithashim" };
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   // --------------------- All function ---------------------
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
+      setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
   // --------------------- All function ---------------------F
-  const authInfo = { user, setUser, createUser, signIn, logOut };
+  const authInfo = { user,loading,setUser, createUser, signIn, logOut, };
   return <AuthContex.Provider value={authInfo}>{children}</AuthContex.Provider>;
 };
 

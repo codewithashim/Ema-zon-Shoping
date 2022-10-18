@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContex } from "../Context/UserContex";
 import Swal from "sweetalert2";
 import "./Login.css";
@@ -7,12 +7,17 @@ import "./Login.css";
 const Login = () => {
   const [error, setError] = useState(null);
   const { signIn, setUser } = useContext(AuthContex);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // const from = location?.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || "/";
 
   const hendelLogin = (event) => {
     event.preventDefault();
-    const from = event.target;
-    const email = from.email.value;
-    const password = from.password.value;
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
     signIn(email, password)
       .then((userCredential) => {
@@ -23,7 +28,9 @@ const Login = () => {
         // ...
         Swal.fire("Succesfully Logdin!", "You are a valid user!", "success");
 
-        from.reset();
+        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
+        form.reset();
       })
       .catch((error) => {
         const errorCode = error.code;
